@@ -1,0 +1,79 @@
+<%- include('../partials/header.ejs', {title:'Members'}) %> <% if (typeof lastID !== 'undefined') { %>
+<h5 class="text-primary">Member added ID <%= lastID %></h5>
+<% } %>
+
+<h1 class="display-3">Members</h1>
+<section class="bsb-author-2 py-3 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8 col-xxl-7">
+                <% members.forEach(member => { %>
+                <div class="card border-light-subtle p-4 mb-4">
+                    <div class="row gy-3 align-items-center">
+                        <div class="col-md-4">
+                            <img
+                                class="img-fluid author-avatar bsb-scale bsb-hover-scale-up"
+                                loading="lazy"
+                                src="/images/<%= member.randomImage %>"
+                                alt="<%= member.first_name %> <%=
+                                        member.last_name %>"
+                            />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title mb-2">
+                                    <%= member.first_name %> <%=
+                                    member.last_name %>
+                                </h3>
+                                <p
+                                    class="card-subtitle mb-2 text-body-secondary"
+                                >
+                                    <strong>Birthdate:</strong>
+                                    <%= member.birthdate %>
+                                </p>
+                                <p
+                                    class="card-subtitle mb-2 text-body-secondary"
+                                >
+                                    <strong>Address:</strong>
+                                    <%= member.address %>
+                                </p>
+                                <p
+                                    class="card-subtitle mb-2 text-body-secondary"
+                                >
+                                    <strong>Phone:</strong>
+                                    <%= member.phone %>
+                                </p>
+                                <p
+                                    class="card-subtitle mb-2 text-body-secondary"
+                                >
+                                    <strong>Email:</strong>
+                                    <%= member.email %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button
+                            type="button"
+                            class="btn btn-warning"
+                            onclick="location.href='/members/update/<%= member.id %>';"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onclick="confirmDelete(<%= member.id %>, 'member')"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer.ejs') %>

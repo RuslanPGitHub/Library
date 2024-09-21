@@ -1,0 +1,56 @@
+<%- include('../partials/header.ejs', {title:'Update publisher'}) %>
+
+<h1 class="display-3">Update publisher</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+            required
+            value="<%= publisher[0].name %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input
+            name="address"
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Address"
+            required
+            value="<%= publisher[0].address %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+            name="phone"
+            type="tel"
+            class="form-control"
+            id="phone"
+            placeholder="Phone"
+            required
+            value="<%= publisher[0].phone %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="website">Website</label>
+        <input
+            name="website"
+            type="url"
+            class="form-control"
+            id="website"
+            placeholder="Website"
+            required
+            value="<%= publisher[0].website %>"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Update author</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>

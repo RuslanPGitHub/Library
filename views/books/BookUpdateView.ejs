@@ -1,0 +1,88 @@
+<%- include('../partials/header.ejs', {title:'Update book'}) %>
+
+<h1 class="display-3">Update book</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="title">Book title</label>
+        <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Book title"
+            required
+            value="<%= book[0].title %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <select name="author" class="form-control" id="author" required>
+            <option value="">Not selected</option>
+            <% authors.forEach(author => { %>
+                <option value="<%= author.id %>" <% if (book[0].author_fullname === author.first_name + ' ' + author.last_name) { %>selected<% } %>>
+                    <%= author.first_name %> <%= author.last_name %>
+                </option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="publisher">Publisher</label>
+        <select name="publisher" class="form-control" id="publisher" required>
+            <option value="">Not selected</option>
+            <% publishers.forEach(publisher => { %>
+                <option value="<%= publisher.id %>" <% if (book[0].publisher_id === publisher.id) { %>selected<% } %>>
+                    <%= publisher.name %>
+                </option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="year">Publication year</label>
+        <input
+            name="year"
+            type="text"
+            class="form-control"
+            id="year"
+            placeholder="Publication year"
+            required
+            value="<%= book[0].year %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input
+            name="isbn"
+            type="text"
+            class="form-control"
+            id="isbn"
+            placeholder="ISBN"
+            required
+            value="<%= book[0].isbn %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre</label>
+        <input
+            name="genre"
+            type="text"
+            class="form-control"
+            id="genre"
+            placeholder="Genre"
+            required
+            value="<%= book[0].genre %>"
+        />
+    </div>
+    <div class="form-group">
+        <label for="description">Book description</label>
+        <textarea
+            name="description"
+            class="form-control"
+            id="description"
+            rows="3"
+            required
+        ><%= book[0].description %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update book</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>

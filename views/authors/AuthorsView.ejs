@@ -1,0 +1,73 @@
+<%- include('../partials/header.ejs', {title:'Authors'}) %> <% if (typeof lastID !== 'undefined') { %>
+<h5 class="text-primary">Authors added ID <%= lastID %></h5>
+<% } %>
+
+<h1 class="display-3">Authors</h1>
+<section class="bsb-author-2 py-3 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8 col-xxl-7">
+                <% authors.forEach(author => { %>
+                <div class="card border-light-subtle p-4 mb-4">
+                    <div class="row gy-3 align-items-center">
+                        <div class="col-md-4">
+                            <a
+                                href="/books/author/<%= author.id %>"
+                                class="bsb-hover-image d-block rounded overflow-hidden"
+                            >
+                                <img
+                                    class="img-fluid author-avatar bsb-scale bsb-hover-scale-up"
+                                    loading="lazy"
+                                    src="/images/<%= author.randomImage %>"
+                                    alt="<%= author.first_name %> <%=
+                                    author.last_name %>"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title mb-2">
+                                    <a
+                                        class="card-link link-dark text-decoration-none"
+                                        href="/books/author/<%= author.id %>"
+                                        ><%= author.first_name %> <%=
+                                        author.last_name %></a
+                                    >
+                                </h3>
+                                <h6
+                                    class="card-subtitle mb-2 text-body-secondary"
+                                >
+                                    <strong>Birthdate:</strong> <%=
+                                    author.birthdate %>
+                                </h6>
+                                <p class="card-text mb-3">
+                                    <%= author.biography %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button
+                            type="button"
+                            class="btn btn-warning"
+                            onclick="location.href='/authors/update/<%= author.id %>';"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onclick="confirmDelete(<%= author.id %>, 'author')"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer.ejs') %>

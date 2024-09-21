@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs', {title:'Loans'}) %><% if (typeof lastID !== 'undefined') {
+%>
+<h5 class="text-primary">Authors added ID <%= lastID %></h5>
+<% } %>
+
+<h1 class="display-3">Loans</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Book name</th>
+            <th scope="col">Member name</th>
+            <th scope="col">Loan date</th>
+            <th scope="col">Return date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% loans.forEach(loan => { %>
+        <tr>
+            <th scope="row"><%= loan.id %></th>
+            <th><%= loan.book_title %></th>
+            <td><%= loan.member_fullname %></td>
+            <td><%= loan.loan_date %></td>
+            <td><%= loan.return_date %></td>
+            <td><%= loan.status %></td>
+            <td>
+                <img
+                    class="icon-action"
+                    alt="Thumbnail [20x25]"
+                    style="width: 20px; height: 25px"
+                    src="/images/edit-svgrepo-com.svg"
+                    onclick="location.href='/loans/update/<%= loan.id %>';"
+                />
+                <img
+                    class="icon-action"
+                    alt="Thumbnail [20x25]"
+                    style="width: 20px; height: 25px"
+                    src="/images/delete-svgrepo-com.svg"
+                    onclick="confirmDelete(<%= loan.id %>, 'loan')"
+                />
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../partials/pagination.ejs') %> <%-
+include('../partials/footer.ejs') %>

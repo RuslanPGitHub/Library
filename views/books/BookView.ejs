@@ -1,0 +1,59 @@
+<%- include('../partials/header.ejs', {title:`Book ${book[0].title}`}) %>
+
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="card flex-md-row mb-4 box-shadow h-md-450">
+            <div class="card-body d-flex flex-column align-items-start">
+                <h1 class="display-3"><%= book[0].title %></h1>
+                <p>
+                    <strong>Author:</strong>
+                    <a href="/books/author/<%= book[0].author_id %>"
+                        ><%= book[0].author_fullname %></a
+                    >
+                </p>
+                <p>
+                    <strong>Genre:</strong>
+                    <a href="/books/genre/<%= book[0].genre %>"
+                        ><%= book[0].genre %></a
+                    >
+                </p>
+                <p>
+                    <strong>Publication year:</strong>
+                    <a href="/books/pubyear/<%= book[0].year %>"
+                        ><%= book[0].year %></a
+                    >
+                </p>
+                <p>
+                    <strong>Publisher:</strong>
+                    <a href="/books/publisher/<%= book[0].publisher_id %>"
+                        ><%= book[0].publisher_name %></a
+                    >
+                </p>
+                <p><strong>Description:</strong> <%= book[0].description %></p>
+                <p><strong>ISBN:</strong> <%= book[0].isbn %></p>
+            </div>
+            <img
+                class="card-img-right flex-auto d-none d-md-block"
+                alt="Thumbnail [350x450]"
+                style="width: 250px; height: 450px"
+                src="/images/book_thumbnail.svg"
+            />
+        </div>
+        <button
+            type="button"
+            class="btn btn-warning"
+            onclick="location.href='/books/update/<%= book[0].id %>';"
+        >
+            Edit
+        </button>
+        <button
+            type="button"
+            class="btn btn-danger"
+            onclick="confirmDelete(<%= book[0].id %>, 'book')"
+        >
+            Delete
+        </button>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

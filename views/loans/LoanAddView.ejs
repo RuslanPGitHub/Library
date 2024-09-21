@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs', {title:'Add loan'}) %> <% if (typeof
+lastID !== 'undefined') { %>
+<h5 class="text-primary">Loan added ID <%= lastID %></h5>
+<% } %>
+
+<!-- Debugging Output -->
+<!-- <pre><%= JSON.stringify(books, null, 2) %></pre> -->
+
+<h1 class="display-3">Add loan</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="book_title">Book title</label>
+        <select name="book_id" class="form-control livesearch" id="book_title" required>
+            <option value="">Not selected</option>
+            <% books.forEach(book => { %>
+            <option value="<%= book.id %>"><%= book.title %></option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="member_name">Member name</label>
+        <select name="member_id" class="form-control livesearch" id="member_name" required>
+            <option value="">Not selected</option>
+            <% members.forEach(member => { %>
+            <option value="<%= member.id %>">
+                <%= member.first_name %> <%= member.last_name %>
+            </option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="loan_date">Loan date</label>
+        <input
+            name="loan_date"
+            type="date"
+            class="form-control"
+            id="loan_date"
+            placeholder="Loan date"
+            required
+        />
+    </div>
+    <div class="form-group" hidden>
+        <label for="status">Status</label>
+        <input
+            name="status"
+            type="text"
+            class="form-control"
+            id="status"
+            placeholder="borrowed"
+            value="borrowed"
+            required
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Add loan</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>

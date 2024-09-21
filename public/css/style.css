@@ -1,0 +1,8 @@
+.icon-action {
+    cursor: pointer;
+    transition: transform 0.2s; /* Optional: for smooth hover effect */
+}
+
+.icon-action:hover {
+    transform: scale(1.1); /* Optional: for hover effect */
+}

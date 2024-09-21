@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs', {title:'Update loan'}) %>
+
+<h1 class="display-3">Add loan</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="return_date">Return date</label>
+        <input
+            name="return_date"
+            type="date"
+            class="form-control"
+            id="return_date"
+            placeholder="Return date"
+            required
+        />
+    </div>
+    <div class="form-group" hidden>
+        <label for="status">Status</label>
+        <input
+            name="status"
+            type="text"
+            class="form-control"
+            id="status"
+            placeholder="returned"
+            value="returned"
+            required
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Update loan</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>

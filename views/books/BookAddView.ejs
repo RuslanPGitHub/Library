@@ -1,0 +1,85 @@
+<%- include('../partials/header.ejs', {title:'Add Book'}) %> <% if (typeof lastID !== 'undefined') {
+%>
+<h5 class="text-primary">Book added ID <%= lastID %></h5>
+<% } %>
+
+<h1 class="display-3">Add book</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="title">Book title</label>
+        <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Book title"
+            required
+        />
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <select name="author" class="form-control livesearch" id="author" required>
+            <option value="">Not selected</option>
+            <% authors.forEach(author => { %>
+            <option value="<%= author.id %>">
+                <%= author.first_name %> <%= author.last_name %>
+            </option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="publisher">Publisher</label>
+        <select name="publisher" class="form-control livesearch" id="publisher" required>
+            <option value="">Not selected</option>
+            <% publishers.forEach(publisher => { %>
+            <option value="<%= publisher.id %>"><%= publisher.name %></option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="year">Publication year</label>
+        <input
+            name="year"
+            type="text"
+            class="form-control"
+            id="year"
+            placeholder="Publication year"
+            required
+        />
+    </div>
+    <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input
+            name="isbn"
+            type="text"
+            class="form-control"
+            id="genre"
+            placeholder="ISBN"
+            required
+        />
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre</label>
+        <input
+            name="genre"
+            type="text"
+            class="form-control"
+            id="genre"
+            placeholder="Genre"
+            required
+        />
+    </div>
+    <div class="form-group">
+        <label for="description">Book description</label>
+        <textarea
+            name="description"
+            class="form-control"
+            id="description"
+            rows="3"
+            required
+        ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add book</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
